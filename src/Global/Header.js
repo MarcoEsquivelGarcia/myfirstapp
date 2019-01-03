@@ -16,19 +16,31 @@ class Header extends Component {
     const { title, items } = this.props;
 
     return (
-      <div className="Header">
 
-          <div className="titleHeader">{title}
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container p-2">
+              <a class="navbar-brand" href="/">{title}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                         aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ml-auto">
+                    {
+                        items && items.map(
+                            (item, key) => <li key={key} className="nav-item"><NavLink to={item.url} className="nav-link" activeStyle="active" exact><i className={item.icon}></i>{item.title}</NavLink></li>
+                        )
+                    }
+                </ul>
+                  <i class="fa fa-shopping-cart fa-inverse"></i><span class="badge badge-error">4</span>
 
-              <ul className="Menu">
-                {
-                  items && items.map(
-                    (item, key) => <li key={key}><NavLink to={item.url} activeStyle="active" exact>{item.title}</NavLink></li>
-                  )
-                }
-              </ul>
-          </div>
-      </div>
+              </div>
+             </div>
+            </nav>
+
+
     );
   }
 }
